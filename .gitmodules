@@ -1,0 +1,12 @@
+[submodule "private/modular"]
+	path = private/modular
+	url = https://github.com/modularml/mojo
+[submodule "private/abseil-cpp"]
+	path = private/abseil-cpp
+	url = https://github.com/abseil/abseil-cpp.git
+[submodule "private/hashbrown"]
+	path = private/hashbrown
+	url = https://github.com/rust-lang/hashbrown.git
+[submodule "private/swiss-go"]
+	path = private/swiss-go
+	url = https://github.com/cockroachdb/swiss.git

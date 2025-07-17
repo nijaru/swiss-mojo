@@ -1,0 +1,42 @@
+[package]
+name = "swiss-table"
+version = "0.1.0"
+description = "High-performance Swiss table hash map implementation for Mojo"
+authors = ["Nick Russo <nijaru7@gmail.com>"]
+license = "Apache-2.0"
+homepage = "https://github.com/nijaru/swiss-table-mojo"
+repository = "https://github.com/nijaru/swiss-table-mojo"
+keywords = ["hash", "hashmap", "swisstable", "performance", "data-structures"]
+
+[dependencies]
+# Requires Mojo nightly or stable release
+mojo = ">=24.5"
+
+[build]
+entry_point = "swisstable"
+package_name = "swiss_table"
+
+[dev-dependencies]
+# For development and testing
+
+[metadata]
+readme = "README.md"
+changelog = "CHANGELOG.md"
+documentation = "docs/"
+
+# Performance characteristics
+[metadata.performance]
+insertion_speedup = "1.16x vs stdlib Dict (baseline)"
+lookup_speedup = "2.38x vs stdlib Dict (baseline)"
+memory_efficiency = "87.5% load factor"
+specialized_speedups = "5.4% to 147% additional over generic"
+bulk_operations = "15-30% throughput improvement for batch sizes 16+"
+platforms = ["Apple Silicon", "Intel x64", "ARM64"]
+
+[metadata.features]
+simd_optimization = true
+custom_hash_functions = true
+enhanced_api = true
+specialized_implementations = true
+bulk_operations = true
+statistical_validation = true

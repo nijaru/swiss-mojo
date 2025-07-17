@@ -1,0 +1,40 @@
+[project]
+name = "swiss-table"
+channels = ["conda-forge", "https://conda.modular.com/max-nightly/"]
+platforms = ["osx-arm64", "linux-64", "linux-aarch64"]
+
+[dependencies]
+max = "*"
+
+[tasks]
+# Core development commands
+format = "mojo format ."
+
+# Unit tests (focused, single responsibility)
+test-edge = "mojo run -I . test/unit/test_edge_cases.mojo"
+test-collisions = "mojo run -I . test/unit/test_collisions.mojo"  
+test-memory = "mojo run -I . test/unit/test_memory_safety.mojo"
+
+# Integration tests (components working together)
+test-comprehensive = "mojo run -I . test/integration/test_comprehensive.mojo"
+test-stress = "mojo run -I . test/integration/test_stress.mojo"
+test-installation = "mojo run -I . test/integration/test_installation.mojo"
+test-package = "mojo run -I . test/integration/test_package.mojo"
+
+# Performance benchmarks
+benchmark = "mojo run -I . benchmarks/core/core_performance.mojo"
+benchmark-specialized = "mojo run -I . benchmarks/core/specialized_performance.mojo"
+benchmark-regression = "mojo run -I . benchmarks/core/regression_guard.mojo"
+
+# Test suites (run multiple tests)
+test-unit = "mojo run -I . test/unit/test_edge_cases.mojo && mojo run -I . test/unit/test_collisions.mojo && mojo run -I . test/unit/test_memory_safety.mojo"
+test-integration = "mojo run -I . test/integration/test_comprehensive.mojo && mojo run -I . test/integration/test_stress.mojo"
+test-all = "pixi run test-unit && pixi run test-integration"
+
+# Convenience aliases
+test = "pixi run test-unit"  # Default to unit tests
+test-basic = "pixi run test-edge"  # Most basic test
+benchmark-all = "pixi run benchmark && pixi run benchmark-specialized"
+
+# Demo and experimental
+demo-python-concept = "mojo run -I . test/test_python_demo.mojo"
